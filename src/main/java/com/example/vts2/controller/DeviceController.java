@@ -16,14 +16,16 @@ import java.util.List;
 @RequestMapping("/api/v1/")
 public class DeviceController {
     DeviceService deviceService;
+
     @GetMapping("/devices")
-    public ResponseEntity<?> getAll() {
-        List<Device> devices = deviceService.getAllDevice();
+    public ResponseEntity<?> getAll(@RequestParam(name = "accountID") String accountID) {
+        List<Device> devices = deviceService.getAllDevice(accountID);
         return ResponseEntity.status(HttpStatus.OK).body(devices);
     }
+
     @GetMapping("/device")
-    public ResponseEntity<?> getDeviceById(@RequestParam(name = "deviceID") String deviceID) {
-        Device device = deviceService.getDeviceById(deviceID);
+    public ResponseEntity<?> getDeviceById(@RequestParam(name = "deviceID") String deviceID, @RequestParam(name = "accountID") String accountID) {
+        Device device = deviceService.getDeviceByAccountAndDeviceID(accountID, deviceID);
         return ResponseEntity.status(HttpStatus.OK).body(device);
     }
 }

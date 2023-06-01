@@ -3,10 +3,7 @@ package com.example.vts2.entity;
 
 import lombok.Data;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 
 @Entity
@@ -18,5 +15,8 @@ public class Account {
     String accountID;
     @Column(name = "password")
     String password;
-
+    @Column(name = "creationtime")
+    int creationtime;
+    @Column(name = "lastlogintime")
+    int lastlogintime;
 }

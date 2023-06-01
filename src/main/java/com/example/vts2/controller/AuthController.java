@@ -36,6 +36,11 @@ public class AuthController {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Invalid email or password");
         }
         UserDetails userDetails = accountService.loadUserByUsername(accountId);
+        Account account = accountService.getAccount(accountId);
+        long timestamp = System.currentTimeMillis();
+        int timestampAsInt = (int) (timestamp / 1000);
+        account.setLastlogintime(timestampAsInt);
+        accountService.updateAccount(account);
         final String token = new JwtTokenProvider().generateToken(userDetails);
         return ResponseEntity.status(HttpStatus.OK).body(token);
     }

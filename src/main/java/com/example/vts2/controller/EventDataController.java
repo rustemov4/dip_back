@@ -17,12 +17,12 @@ public class EventDataController {
     EventDataService eventDataService;
 
     @GetMapping("/eventData")
-    public ResponseEntity<?> findEventData(@RequestParam(name = "deviceID") String deviceID, @RequestParam(name = "startTimestamp") int startTimestamp, @RequestParam(name = "endTimestamp") int endTimestamp) {
-        return ResponseEntity.status(HttpStatus.OK).body(eventDataService.findEventDataBetween(deviceID, startTimestamp, endTimestamp));
+    public ResponseEntity<?> findEventData(@RequestParam(name = "deviceID") String deviceID, @RequestParam(name = "startTimestamp") int startTimestamp, @RequestParam(name = "endTimestamp") int endTimestamp, @RequestParam(name = "accountID") String accountID) {
+        return ResponseEntity.status(HttpStatus.OK).body(eventDataService.findEventDataBetween(deviceID, startTimestamp, endTimestamp, accountID));
     }
 
     @GetMapping("/latestPosition")
-    public ResponseEntity<?> findLatestPositionOfDevice(@RequestParam(name = "deviceID") String deviceID) {
+    public ResponseEntity<?> findLatestPositionOfDevice(@RequestParam(name = "deviceID") String deviceID, @RequestParam(name = "accountID") String accountID) {
         return ResponseEntity.status(HttpStatus.OK).body(eventDataService.findLatestPositionOfDevice(deviceID));
     }
 }
