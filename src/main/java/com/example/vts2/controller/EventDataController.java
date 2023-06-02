@@ -18,11 +18,16 @@ public class EventDataController {
 
     @GetMapping("/eventData")
     public ResponseEntity<?> findEventData(@RequestParam(name = "deviceID") String deviceID, @RequestParam(name = "startTimestamp") int startTimestamp, @RequestParam(name = "endTimestamp") int endTimestamp, @RequestParam(name = "accountID") String accountID) {
-        return ResponseEntity.status(HttpStatus.OK).body(eventDataService.findEventDataBetween(deviceID, startTimestamp, endTimestamp, accountID));
+        return ResponseEntity.status(HttpStatus.OK).body(eventDataService.findEventDataBetween(deviceID, startTimestamp, endTimestamp, "logitex"));
     }
 
     @GetMapping("/latestPosition")
     public ResponseEntity<?> findLatestPositionOfDevice(@RequestParam(name = "deviceID") String deviceID, @RequestParam(name = "accountID") String accountID) {
         return ResponseEntity.status(HttpStatus.OK).body(eventDataService.findLatestPositionOfDevice(deviceID));
+    }
+
+    @GetMapping("/report")
+    public ResponseEntity<?> report(@RequestParam(name = "deviceID") String deviceID, @RequestParam(name = "startTimestamp") int startTimestamp, @RequestParam(name = "endTimestamp") int endTimestamp, @RequestParam(name = "speed") Double speedKPH) {
+        return ResponseEntity.status(HttpStatus.OK).body(eventDataService.report(deviceID, startTimestamp, endTimestamp, speedKPH));
     }
 }

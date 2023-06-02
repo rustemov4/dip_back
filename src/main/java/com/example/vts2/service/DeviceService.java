@@ -20,7 +20,23 @@ public class DeviceService {
         return deviceRepository.findDeviceByDeviceID(deviceID);
     }
 
+    public List<Device> getDevicesByDeviceID(String deviceID) {
+        return deviceRepository.findDevicesByDeviceID(deviceID);
+    }
+
     public Device getDeviceByAccountAndDeviceID(String accountID, String deviceID) {
         return deviceRepository.findDeviceByAccountIDAndDeviceID(accountID, deviceID);
+    }
+
+    public List<Device> getDevicesByGroupId(String groupID) {
+        return deviceRepository.findDevicesByGroupID(groupID);
+    }
+
+    public boolean existsByAccountIDAndDeviceID(String accountID, String deviceID) {
+        return deviceRepository.existsByAccountIDAndDeviceID(accountID, deviceID);
+    }
+
+    public void update(Device device) {
+        deviceRepository.save(device);
     }
 }

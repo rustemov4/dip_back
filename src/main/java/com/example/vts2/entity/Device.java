@@ -30,4 +30,6 @@ public class Device {
     int lastGPSTimestamp;
     @Column(name = "lastodometerKM")
     Double lastOdometerKM;
+    @Column(name = "groupID")
+    String groupID;
 }

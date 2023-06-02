@@ -41,7 +41,9 @@ public class AccountService implements UserDetailsService {
     public void updateAccount(Account account){
         accountRepository.save(account);
     }
-
+    public boolean existsByAccountID(String accountID){
+        return accountRepository.existsAccountByAccountID(accountID);
+    }
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         Account account = accountRepository.findAccountByAccountID(username);

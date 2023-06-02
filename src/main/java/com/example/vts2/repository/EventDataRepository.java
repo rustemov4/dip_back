@@ -13,5 +13,5 @@ public interface EventDataRepository extends JpaRepository<EventData, EventDataI
     List<EventData> findEventDataByAccountIDAndDeviceIDAndTimestampBetweenOrderByTimestampAsc(String accountID, String deviceID, int timestamp, int timestamp2);
 
     EventData findTopByAccountIDAndDeviceIDOrderByTimestampDesc(String accountID, String deviceID);
-
+    List<EventData> findEventDataByAccountIDAndDeviceIDAndTimestampBetweenAndSpeedKPHGreaterThan(String accountID, String deviceID, int timestamp, int timestamp2, Double speedKPH);
 }

@@ -28,4 +28,8 @@ public class DeviceController {
         Device device = deviceService.getDeviceByAccountAndDeviceID(accountID, deviceID);
         return ResponseEntity.status(HttpStatus.OK).body(device);
     }
+    @GetMapping("/device_by_groupID")
+    public ResponseEntity<?> getDevicesByGroupIdController(@RequestParam(name = "groupID") String groupID){
+        return ResponseEntity.status(HttpStatus.OK).body(deviceService.getDevicesByGroupId(groupID));
+    }
 }

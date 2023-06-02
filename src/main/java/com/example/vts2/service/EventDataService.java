@@ -25,4 +25,8 @@ public class EventDataService {
     public EventData findLatestPositionOfDevice(String deviceID) {
         return eventDataRepository.findTopByAccountIDAndDeviceIDOrderByTimestampDesc("logitex", deviceID);
     }
+
+    public List<EventData> report(String deviceID, int timestamp, int timestamp2, Double speedKPH) {
+        return eventDataRepository.findEventDataByAccountIDAndDeviceIDAndTimestampBetweenAndSpeedKPHGreaterThan("logitex", deviceID, timestamp, timestamp2, speedKPH);
+    }
 }
